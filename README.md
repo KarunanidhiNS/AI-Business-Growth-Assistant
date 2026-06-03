@@ -150,7 +150,7 @@ AI-Business-Growth-Assistant/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/AI-Business-Growth-Assistant.git
+git clone [https://github.com/AI-Business-Growth-Assistant.git](https://github.com/KarunanidhiNS/AI-Business-Growth-Assistant.git)
 
 cd AI-Business-Growth-Assistant
 ```
