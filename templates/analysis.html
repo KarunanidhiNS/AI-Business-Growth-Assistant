@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Growth Report — Business Analysis Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="static/css/analysis.css">
+</head>
+<body>
+
+<div class="bg-layer"></div>
+
+<div class="wrap">
+
+  <!-- BRAND HEADER -->
+  <header class="brand-header">
+    <div class="brand-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div class="brand-name">AI Business<span>Intelligence Platform</span></div>
+    <a href="/" class="back-btn">← New Analysis</a>
+  </header>
+
+  <!-- PAGE HEADING -->
+  <div class="page-head">
+    <div>
+      <div class="page-eyebrow">Analysis Complete</div>
+      <div class="page-title">AI Business <span>Growth Report</span></div>
+      <div class="page-meta">Generated for {{ website_data.title or "Your Business" }} · Just now</div>
+    </div>
+    <a href="/download-report" class="dl-btn">
+      ↓ Download PDF Report
+    </a>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SCORE CARDS -->
+    <div class="score-row">
+      <div class="score-card">
+        <div class="sc-ring"><div class="sc-ring-inner">🏢</div></div>
+        <div class="sc-label">Business Health Score</div>
+        <div class="sc-num gold">{{ summary.final_score }}</div>
+        <div class="sc-sub">{{ summary.health }}</div>
+      </div>
+      <div class="score-card green">
+        <div class="sc-ring g"><div class="sc-ring-inner">🌐</div></div>
+        <div class="sc-label">Website Score</div>
+        <div class="sc-num greenval">{{ website_score.website_score }}</div>
+        <div class="sc-sub">Digital presence rating</div>
+      </div>
+      <div class="score-card blue">
+        <div class="sc-ring b"><div class="sc-ring-inner">⭐</div></div>
+        <div class="sc-label">Review Score</div>
+        <div class="sc-num blueval">{{ review_score }}</div>
+        <div class="sc-sub">Customer sentiment index</div>
+      </div>
+    </div>
+
+    <!-- WEBSITE ANALYSIS -->
+    <div class="section-card">
+      <div class="sc-head">
+        <div class="sc-head-accent b"></div>
+        <h3>Website Analysis</h3>
+        <span class="sc-head-badge badge-gold">SEO Intelligence</span>
+      </div>
+      <div class="sc-body">
+        <div class="meta-grid">
+          <div class="meta-item">
+            <div class="meta-key">Page Title</div>
+            <div class="meta-val">{{ website_data.title }}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-key">Meta Description</div>
+            <div class="meta-val">{{ website_data.meta_description }}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-key">H1 Headings</div>
+            <div class="meta-val num">{{ website_data.h1_count }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPETITOR ANALYSIS -->
+    <div class="section-card">
+      <div class="sc-head">
+        <div class="sc-head-accent r"></div>
+        <h3>Competitor Analysis</h3>
+        <span class="sc-head-badge badge-gold">Market Intel</span>
+      </div>
+      <div class="sc-body">
+        <div class="competitor-body">
+          <div class="comp-text">{{ comparison.comparison }}</div>
+          <div class="comp-score-wrap">
+            <div class="comp-score-label">Competitor Score</div>
+            <div class="comp-score-val">{{ competitor_score }}</div>
+            <div class="comp-score-sub">vs. your score</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOMER REVIEW ANALYSIS -->
+    <div class="section-card">
+      <div class="sc-head">
+        <div class="sc-head-accent g"></div>
+        <h3>Customer Review Analysis</h3>
+        <span class="sc-head-badge badge-green">Sentiment Data</span>
+      </div>
+      <div class="sc-body">
+        <div class="review-layout">
+          <div>
+            <!-- Sentiment Bars -->
+            <div class="sentiment-bars" style="margin-bottom:1.5rem">
+              <div class="sbar-row">
+                <div class="sbar-header">
+                  <span class="sbar-label">Positive Reviews</span>
+                  <span class="sbar-count">{{ review_analysis.sentiment_report.positive }}</span>
+                </div>
+                <div class="sbar-track">
+                  <div class="sbar-fill sbar-pos" style="width: {{ review_analysis.sentiment_report.positive }}%"></div>
+                </div>
+              </div>
+              <div class="sbar-row">
+                <div class="sbar-header">
+                  <span class="sbar-label">Negative Reviews</span>
+                  <span class="sbar-count">{{ review_analysis.sentiment_report.negative }}</span>
+                </div>
+                <div class="sbar-track">
+                  <div class="sbar-fill sbar-neg" style="width: {{ review_analysis.sentiment_report.negative }}%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Complaints -->
+            <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--dim);margin-bottom:9px;">Top Complaints</div>
+            <ul class="complaints-list">
+              {% for item in review_analysis.complaints %}
+              <li>
+                <span class="c-dot"></span>
+                {{ item[0] }}
+                <span class="c-mentions">{{ item[1] }} mentions</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- Chart -->
+          <div class="chart-wrap">
+            <canvas id="sentimentChart" width="200" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIORITY ACTION PLAN -->
+    <div class="section-card">
+      <div class="sc-head">
+        <div class="sc-head-accent"></div>
+        <h3>Priority Action Plan</h3>
+        <span class="sc-head-badge badge-gold">Ranked by Impact</span>
+      </div>
+      <div class="sc-body">
+        <div class="priority-list">
+          {% for item in priorities %}
+          <div class="priority-item">
+            <div class="p-badge
+              {% if item.priority|lower == 'high' %}p-high
+              {% elif item.priority|lower == 'medium' %}p-medium
+              {% else %}p-low{% endif %}">
+              {{ loop.index }}
+            </div>
+            <div class="p-content">
+              <div class="p-level">{{ item.priority }} Priority</div>
+              <div class="p-action">{{ item.action }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- AI RECOMMENDATIONS -->
+    <div class="section-card">
+      <div class="sc-head">
+        <div class="sc-head-accent b"></div>
+        <h3>AI Recommendations</h3>
+        <span class="sc-head-badge" style="background:rgba(91,155,213,0.1);color:var(--blue);border:1px solid rgba(91,155,213,0.25)">GPT-4o Analysis</span>
+      </div>
+      <div class="sc-body">
+        <div class="ai-badge">
+          <span class="ai-dot"></span>
+          AI Generated · Growth Report
+        </div>
+        <div class="report-content">
+          {{ ai_report | safe }}
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- FOOTER -->
+  <div class="trust-bar">
+
+    <div class="trust-item">⚡ <strong>99.9%</strong> Uptime SLA</div>
+    <div class="trust-item">🤝 <strong>Enterprise</strong> Support</div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+  // Sentiment Doughnut Chart
+  const ctx = document.getElementById('sentimentChart');
+  if (ctx) {
+    const pos = parseInt('{{ review_analysis.sentiment_report.positive }}') || 70;
+    const neg = parseInt('{{ review_analysis.sentiment_report.negative }}') || 30;
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Positive', 'Negative'],
+        datasets: [{
+          data: [pos, neg],
+          backgroundColor: ['#4CAF85', '#D75E5E'],
+          borderColor: 'rgba(13,27,42,0)',
+          borderWidth: 0,
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        cutout: '72%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#8A9BB0',
+              font: { family: 'Inter', size: 11 },
+              boxWidth: 10, padding: 14
+            }
+          },
+          tooltip: {
+            backgroundColor: '#142235',
+            titleColor: '#F4F6F9',
+            bodyColor: '#8A9BB0',
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 1
+          }
+        }
+      }
+    });
+  }
+</script>
+</body>
+</html>

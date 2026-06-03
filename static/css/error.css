@@ -1,0 +1,200 @@
+:root {
+    --navy:   #0D1B2A;
+    --navy2:  #142235;
+    --border: rgba(255,255,255,0.09);
+    --border2:rgba(255,255,255,0.16);
+    --gold:   #C9A96E;
+    --gold2:  #E8C98A;
+    --white:  #F4F6F9;
+    --muted:  #8A9BB0;
+    --dim:    #556275;
+    --red:    #D75E5E;
+    --card:   rgba(13,27,42,0.85);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; height: 100%; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── BACKGROUND ── */
+.bg-layer {
+    position: fixed; inset: 0; z-index: 0;
+    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&q=85&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center top;
+}
+.bg-layer::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(11,22,36,0.93);
+}
+
+.wrap {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ── BRAND HEADER ── */
+.brand-header {
+    padding: 2rem 3.5rem;
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: 1px solid var(--border);
+}
+.brand-mark {
+    width: 38px; height: 38px; border-radius: 9px;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.brand-mark svg { width: 20px; height: 20px; fill: var(--navy); }
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 1.3rem;
+    letter-spacing: -0.01em; color: var(--white);
+}
+.brand-name span { color: var(--gold); }
+
+/* ── MAIN ERROR STAGE ── */
+.error-stage {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.error-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    backdrop-filter: blur(24px);
+    padding: 3.5rem 3rem;
+    max-width: 560px; width: 100%;
+    text-align: center;
+    position: relative; overflow: hidden;
+}
+
+/* Red top accent bar */
+.error-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--red);
+}
+
+/* Error icon */
+.error-icon-wrap {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: rgba(215,94,94,0.1);
+    border: 1px solid rgba(215,94,94,0.25);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.75rem;
+    font-size: 30px;
+}
+
+/* Error code badge */
+.error-code {
+    display: inline-block;
+    font-size: 0.62rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--red);
+    background: rgba(215,94,94,0.1);
+    border: 1px solid rgba(215,94,94,0.22);
+    padding: 4px 12px; border-radius: 3px;
+    margin-bottom: 1.1rem;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 800;
+    color: var(--white); letter-spacing: -0.02em;
+    line-height: 1.2; margin-bottom: 1rem;
+}
+
+.error-message {
+    font-size: 0.88rem; color: var(--muted);
+    line-height: 1.75; margin-bottom: 2.25rem;
+    font-weight: 300;
+}
+
+/* Divider */
+.divider {
+    height: 1px; background: var(--border);
+    margin: 0 0 2rem;
+}
+
+/* Action buttons */
+.btn-row {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: var(--navy);
+    border: none; border-radius: 5px;
+    padding: 11px 22px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    text-decoration: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: none;
+    border: 1px solid var(--border2);
+    color: var(--muted); border-radius: 5px;
+    padding: 11px 22px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem; font-weight: 500;
+    text-decoration: none; cursor: pointer;
+    transition: border-color .2s, color .2s;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold2); }
+
+/* Possible causes */
+.causes {
+    margin-top: 2rem;
+    text-align: left;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 6px; padding: 1.1rem 1.25rem;
+}
+.causes-title {
+    font-size: 0.63rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--dim); margin-bottom: 10px;
+}
+.causes-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.causes-list li {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 0.77rem; color: var(--muted);
+}
+.c-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--dim); flex-shrink: 0;
+}
+
+/* ── FOOTER STRIP ── */
+.trust-bar {
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    gap: 2.5rem; padding: 1.5rem 3.5rem;
+    border-top: 1px solid var(--border);
+    background: rgba(13,27,42,0.6);
+    backdrop-filter: blur(10px);
+}
+.trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--dim); }
+.trust-item strong { color: var(--muted); font-weight: 500; }
+
+@media (max-width: 560px) {
+    .brand-header { padding: 1.5rem 1.5rem; }
+    .error-card { padding: 2.5rem 1.5rem; }
+    .trust-bar { gap: 1.25rem; padding: 1.25rem; }
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Business Growth Assistant</title>
+  <link rel="stylesheet" href="static/css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+</head>
+<body>
+
+<!-- FIXED BACKGROUND IMAGE -->
+<div class="bg-layer"></div>
+
+<div class="wrap">
+
+  <!-- BRAND HEADER (no nav) -->
+  <header class="brand-header">
+    <div class="brand-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div class="brand-name">AI Business <span>Intelligence Platform</span></div>
+    <div class="brand-tagline">Grow Your Business</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        AI Business Growth Assistant
+      </div>
+      <h1>Identify Problems. Discover <em>Growth Opportunities.</em></h1>
+      <p class="hero-sub">
+        Many local business owners experience slow growth but don't know the exact reasons. This system identifies business problems, competitor advantages, and improvement strategies — automatically, using AI.
+      </p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">9<sup>+</sup></div>
+          <div class="stat-label">Output Reports</div>
+        </div>
+        <div>
+          <div class="stat-num">5<sup> AI</sup></div>
+          <div class="stat-label">Core Features</div>
+        </div>
+        <div>
+          <div class="stat-num">1<sup> PDF</sup></div>
+          <div class="stat-label">Full Report</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-frame">
+        <img
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=780&q=80&auto=format&fit=crop"
+          alt="Business analytics on screen"
+        />
+      </div>
+      <div class="metric-card mc-tl">
+        <div class="mc-label">Powered By</div>
+        <div class="mc-val">TextBlob NLP</div>
+        <div class="mc-sub">+ Mistral AI</div>
+      </div>
+      <div class="metric-card mc-br">
+        <div class="mc-row">
+          <span class="live-dot"></span>
+          <span class="live-txt">Analysis engine ready</span>
+        </div>
+        <div class="mc-label" style="margin-top:6px;">Built with</div>
+        <div class="mc-val" style="font-size:1.05rem;">Python · Flask</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <div class="features-strip">
+    <div class="feat-item">
+      <div class="feat-icon">🔍</div>
+      <div>
+        <div class="feat-title">Sentiment Analysis</div>
+        <div class="feat-sub">TextBlob NLP on customer reviews</div>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">⚡</div>
+      <div>
+        <div class="feat-title">Competitor Analysis</div>
+        <div class="feat-sub">Scrape &amp; benchmark rival websites</div>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">🧠</div>
+      <div>
+        <div class="feat-title">AI Recommendations</div>
+        <div class="feat-sub">Mistral AI-powered growth insights</div>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">📄</div>
+      <div>
+        <div class="feat-title">PDF Report</div>
+        <div class="feat-sub">Full report via ReportLab</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <section class="main">
+
+    <!-- FORM -->
+    <div class="form-panel">
+      <div class="panel-tag">Submit Your Business Details</div>
+      <div class="panel-title">Start Your Growth Analysis</div>
+      <p class="panel-sub">Enter your business information below. The system will scrape your website, analyse customer reviews, benchmark competitors, and generate a full AI-powered report.</p>
+
+      <form action="/analyze-business" method="POST" enctype="multipart/form-data">
+
+        <!-- BUSINESS INFO -->
+        <div class="form-section">
+          <div class="section-divider">Business Information</div>
+
+          <div class="field">
+            <label for="business_name">Business Name <span style="color:var(--gold)">*</span></label>
+            <div class="input-wrap">
+              <span class="input-icon">🏢</span>
+              <input type="text" id="business_name" name="business_name" placeholder="e.g. Acme Technologies" required />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="website_url">Website URL <span style="color:var(--gold)">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">🌐</span>
+                <input type="url" id="website_url" name="website_url" placeholder="https://yourbusiness.com" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="industry">Industry <span style="color:var(--gold)">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">🏭</span>
+                <input type="text" id="industry" name="industry" placeholder="e.g. SaaS, Retail" required />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REVIEWS -->
+        <div class="form-section">
+          <div class="section-divider">Customer Reviews</div>
+          <label>Upload Reviews CSV <span style="color:var(--dim);font-style:italic">(optional)</span></label>
+          <div class="file-zone" onclick="document.getElementById('reviews_file').click()">
+            <input type="file" id="reviews_file" name="reviews_file" accept=".csv"
+              onchange="document.getElementById('fn').textContent = this.files[0]?.name || 'No file chosen'" />
+            <div class="file-zone-icon">📂</div>
+            <div class="file-zone-text"><strong>Click to upload</strong> or drag & drop</div>
+            <div class="file-zone-hint" id="fn">CSV format — columns: review_text, rating, date</div>
+          </div>
+        </div>
+
+        <!-- COMPETITORS -->
+        <div class="form-section">
+          <div class="section-divider">Competitor URLs</div>
+          <div class="field">
+            <label for="competitor1">Competitor 1</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔗</span>
+              <input type="url" id="competitor1" name="competitor1" placeholder="https://competitor-one.com" />
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label for="competitor2">Competitor 2</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔗</span>
+              <input type="url" id="competitor2" name="competitor2" placeholder="https://competitor-two.com" />
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Run AI Analysis
+          <span class="btn-arrow">→</span>
+        </button>
+
+        <div class="form-footer">🔒 Encrypted &amp; never stored </div>
+      </form>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- HOW IT WORKS -->
+      <div class="info-card">
+        <div class="ic-title">
+          <div class="ic-accent"></div>
+          Core Workflow
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-name">Business Info Submitted</div>
+              <div class="step-desc">User provides business name, industry, website URL, competitor URL, and reviews CSV.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-name">Website Scraping</div>
+              <div class="step-desc">Requests &amp; BeautifulSoup scrape and analyse the business website structure and content.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-name">Review &amp; Sentiment Analysis</div>
+              <div class="step-desc">Pandas processes the CSV; TextBlob detects positive/negative sentiment and top complaints.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-name">Competitor Benchmarking</div>
+              <div class="step-desc">Competitor websites are scraped and compared to identify gaps and advantages.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div>
+              <div class="step-name">AI Insights &amp; Priority Plan</div>
+              <div class="step-desc">Mistral AI generates recommendations; the priority engine ranks the most impactful actions.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div>
+              <div class="step-name">PDF Report Generated</div>
+              <div class="step-desc">ReportLab compiles the full business growth report, ready for instant download.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT WE ANALYSE -->
+      <div class="info-card">
+        <div class="ic-title">
+          <div class="ic-accent"></div>
+          What We Analyse
+        </div>
+        <div class="tags-grid">
+          <div class="tag"><span class="tag-dot tg"></span>Review Sentiment</div>
+          <div class="tag"><span class="tag-dot tb"></span>SEO Gaps</div>
+          <div class="tag"><span class="tag-dot tr"></span>Churn Indicators</div>
+          <div class="tag"><span class="tag-dot tt"></span>Content Positioning</div>
+          <div class="tag"><span class="tag-dot tp"></span>UX Signals</div>
+          <div class="tag"><span class="tag-dot tg"></span>Pricing Strategy</div>
+          <div class="tag"><span class="tag-dot tb"></span>Competitor Weaknesses</div>
+          <div class="tag"><span class="tag-dot tr"></span>Growth Opportunities</div>
+        </div>
+      </div>
+
+      <!-- TESTIMONIAL -->
+      <div class="quote-card">
+        <div class="quote-text">
+          Surfaced a competitor blind spot we had missed for two years. Within one quarter we captured 18% of their customer base.
+        </div>
+        <div class="quote-author">
+          <div class="q-avatar">RK</div>
+          <div>
+            <div class="q-name">Rohan Kapoor</div>
+            <div class="q-role">CEO, NovaSpark — B2B SaaS</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">⚡ <strong>99.9%</strong> Uptime SLA</div>
+    <div class="trust-item">🤝 <strong>Enterprise</strong> Support</div>
+  </div>
+
+</div>
+</body>
+</html>
