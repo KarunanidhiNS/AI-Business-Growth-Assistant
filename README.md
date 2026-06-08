@@ -241,16 +241,27 @@ The system generates:
 
 ![Screenshots](screenshots/01.png)
 
-![Customer Review Analysis](screenshots/review-analysis.png)
+![Screenshots](screenshots/02.png)
 
-![Competitor Analysis](screenshots/competitor-analysis.png)
+![Screenshots](screenshots/03.png)
 
-![AI Insights](screenshots/ai-insights.png)
+![Screenshots](screenshots/04.png)
 
-![Action Plan](screenshots/action-plan.png)
+![Screenshots](screenshots/05.png)
 
-![PDF Report](screenshots/pdf-report.png)
+![Screenshots](screenshots/06.png)
 
+![Screenshots](screenshots/07.png)
+
+![Screenshots](screenshots/08.png)
+
+![Screenshots](screenshots/09.png)
+
+![Screenshots](screenshots/10.png)
+
+![Screenshots](screenshots/11.png)
+
+![Screenshots](screenshots/12.png)
 
 ## Future Enhancements
 
