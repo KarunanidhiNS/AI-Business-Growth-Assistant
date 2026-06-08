@@ -239,9 +239,7 @@ The system generates:
 
 ## Screenshots
 
-(screenshots/01.png)
-
-![Website Analysis](screenshots/website-analysis.png)
+![Screenshots](screenshots/01.png)
 
 ![Customer Review Analysis](screenshots/review-analysis.png)
 
