@@ -239,43 +239,17 @@ The system generates:
 
 ## Screenshots
 
-### Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
-*Main dashboard showing business health score, key findings, and growth recommendations.*
-
-### Website Analysis
+(screenshots/01.png)
 
 ![Website Analysis](screenshots/website-analysis.png)
 
-*Website analysis including SEO metrics, heading structure, and content assessment.*
-
-### Customer Review Analysis
-
 ![Customer Review Analysis](screenshots/review-analysis.png)
-
-*Sentiment analysis of customer reviews with positive and negative feedback insights.*
-
-### Competitor Analysis
 
 ![Competitor Analysis](screenshots/competitor-analysis.png)
 
-*Competitive benchmarking and feature comparison against competitors.*
-
-### AI Insights & Recommendations
-
 ![AI Insights](screenshots/ai-insights.png)
 
-*AI-generated business insights, opportunities, and actionable recommendations.*
-
-### Priority Action Plan
-
 ![Action Plan](screenshots/action-plan.png)
-
-*Prioritized action plan ranked by business impact and implementation effort.*
-
-### PDF Report Generation
 
 ![PDF Report](screenshots/pdf-report.png)
 
